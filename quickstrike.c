@@ -3,11 +3,29 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <gdk/gdkkeysyms.h>
+#include <plugin.h>
+#include <version.h>
 
-#include "gtkimhtml.h"
-#include "notify.h"
-#include "plugin.h"
-#include "version.h"
+/* From gtkimhtml.h */
+typedef enum {
+        GTK_IMHTML_BOLD =       1 << 0,
+        GTK_IMHTML_ITALIC =     1 << 1,
+        GTK_IMHTML_UNDERLINE =  1 << 2,
+        GTK_IMHTML_GROW =       1 << 3,
+        GTK_IMHTML_SHRINK =     1 << 4,
+        GTK_IMHTML_FACE =       1 << 5,
+        GTK_IMHTML_FORECOLOR =  1 << 6,
+        GTK_IMHTML_BACKCOLOR =  1 << 7,
+        GTK_IMHTML_BACKGROUND = 1 << 8,
+        GTK_IMHTML_LINK =       1 << 9,
+        GTK_IMHTML_IMAGE =      1 << 10,
+        GTK_IMHTML_SMILEY =     1 << 11,
+        GTK_IMHTML_LINKDESC =   1 << 12,
+        GTK_IMHTML_STRIKE =     1 << 13,
+        /** Show custom smileys when appropriate. @since 2.5.0 */
+        GTK_IMHTML_CUSTOM_SMILEY = 1 << 14,
+        GTK_IMHTML_ALL =       -1
+} GtkIMHtmlButtons;
 
 static gboolean
 plugin_load(PurplePlugin *plugin) {
