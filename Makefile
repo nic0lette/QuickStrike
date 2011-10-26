@@ -1,8 +1,7 @@
 #Customisable stuff here
 LINUX_COMPILER = gcc
 
-LIBPURPLE_CFLAGS = -I/usr/include/libpurple
-GLIB_CFLAGS = `pkg-config pidgin --cflags --libs`
+PLUGIN_CFLAGS = `pkg-config pidgin --cflags --libs`
 
 SOURCES = quickstrike.c
 	
@@ -17,5 +16,5 @@ clean:
 	rm -f quickstrike.so
 
 quickstrike.so:	${SOURCES}
-	${LINUX_COMPILER} ${LIBPURPLE_CFLAGS} -Wall ${GLIB_CFLAGS} -I. -g -O2 -pipe ${SOURCES} -o $@ -shared -fPIC -DPIC
+	${LINUX_COMPILER} ${PLUGIN_CFLAGS} -Wall -I. -g -O2 -pipe ${SOURCES} -o $@ -shared -fPIC -DPIC
 
